@@ -4,10 +4,19 @@
  */
 package com.mycompany.pokemonadvance;
 
+import java.util.ArrayList;
+
 /**
  *
- * @author lrosellg
+ * @author igallego
  */
-public class Trainner {
+public class BBDD {
+    
+    private static ArrayList<Pokemon> pokemonsBBDD = new ArrayList();
+    private static ArrayList<Trainer> trainersBBDD = new ArrayList();
+    
+    
+    
+    
     
 }

@@ -4,10 +4,28 @@
  */
 package com.mycompany.pokemonadvance;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author lrosellg
  */
 public class Login {
+    
+    private boolean logged;
+    
+    public Trainer myLogin(String email, String password, ArrayList<Trainer> trainersList){
+        for (Trainer t : trainersList){
+            if (email.equals(t.getEmail()) && password.equals(t.getPassword())){
+                logged=true;
+                System.out.println("Ha iniciado sesión como "+t.getName());
+                return t;
+            }
+        }
+        System.out.println("La contraseña o el usuario no son correctos.");
+        return null;
+        
+        
+    }
     
 }

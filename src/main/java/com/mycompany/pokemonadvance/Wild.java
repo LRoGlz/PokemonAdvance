@@ -4,10 +4,13 @@
  */
 package com.mycompany.pokemonadvance;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author lrosellg
  */
 public class Wild {
-    //ap
+    private static ArrayList<Pokemon> wildPokemons = new ArrayList();
+    
 }
