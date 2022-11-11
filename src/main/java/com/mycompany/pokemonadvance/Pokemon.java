@@ -23,8 +23,8 @@ public class Pokemon {
         this.number = number;
         this.type = type;
         Random r = new Random();
-        this.level = r.nextInt(10);
-        this.power = r.nextInt(100);
+        this.level = r.nextInt(10)+1;
+        this.power = r.nextInt(100)+1;
     }
 
     public String getName() {
@@ -67,4 +67,110 @@ public class Pokemon {
         this.power = power;
     }
 
+    public boolean fight(Pokemon pokemonEnemy) {
+        comparePokemons(pokemonEnemy);
+        if(comparePokemons(pokemonEnemy))
+            return true;
+        else
+            return false;
+    }
+    
+    // Pelear contra otro usuario
+    public void fightEnemy (Trainer enemy){
+        enemy.getPokeball();
+        Random r = new Random();
+        int index = r.nextInt(enemy.getPokeball().size());
+        Pokemon pokemonEnemy = enemy.getPokeball().get(index);
+        comparePokemons(pokemonEnemy);
+    }
+    
+    // Compara los pokemons para ver quien gana
+    public boolean comparePokemons (Pokemon pokemonEnemy){
+        if (!type.equals(pokemonEnemy.type)) {
+            switch (pokemonEnemy.type) {
+                case "fuego":
+                    if ("planta".equals(type)) {
+                        power = power - 30;
+                    } else {
+                        power = power + 30;
+                    }
+                    break;
+                case "agua":
+                    if ("fuego".equals(type)) {
+                        power = power - 30;
+                    } else {
+                        power = power + 30;
+                    }
+                    break;
+                case "planta":
+                    if ("agua".equals(type)) {
+                        power = power - 30;
+                    } else {
+                        power = power + 30;
+                    }
+                    break;
+                default:
+                    break;
+
+            }
+        }
+        if (power >= pokemonEnemy.getPower()) {
+            level++;
+            if (level == 5){
+                evolve();
+            }
+            System.out.println("Enhorabuena, has ganado");
+            return true;
+        } else {
+            System.out.println("Oh no, has perdido");
+            return false;
+        }
+    }
+    
+    public void train (){
+        ++this.level;
+        System.out.println(this.name + "ha subido a nivel " + this.level);
+        if (level == 5){
+            evolve();
+        }
+    }
+    
+    public void evolve (){
+        power = power + 20;
+            switch (this.name) {
+                case "Bulbasaur":
+                    this.name = "Ivysaur";
+                    break;
+                case "Charmander":
+                    this.name = "Charmeleon";
+                    break;
+                case "Squirtle":
+                    this.name = "Wartortle";
+                    break;
+                case "Chikorita":
+                    this.name = "Bayleef";
+                    break;
+                case "Piplup":
+                    this.name = "Prinplup";
+                    break;
+                case "Cyndaquil":
+                    this.name = "Quilava";
+                    break;
+                case "Oddish":
+                    this.name = "Gloom";
+                    break;
+                case "Poliwag":
+                    this.name = "Poliwhirl";
+                    break;
+                case "Ponyta":
+                    this.name = "Rapidash";
+                    break;
+                case "Psyduck":
+                    this.name = "Golduck";
+                    break;
+                default:
+                    break;
+            }
+            System.out.println("Tu pokemon ha evolucionado a " + name);
+    }
 }

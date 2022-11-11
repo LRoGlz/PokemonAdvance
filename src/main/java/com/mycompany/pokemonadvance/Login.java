@@ -27,5 +27,16 @@ public class Login {
         
         
     }
+
+    public boolean isLogged() {
+        return logged;
+    }
+
+    public void setLogged(boolean logged) {
+        this.logged = logged;
+    }
+
+    
+    
     
 }
