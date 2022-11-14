@@ -79,13 +79,14 @@ public class Trainer {
         pokeball.add(pokemon);
     }
 
-    public void showPokeball() {
+    public ArrayList<Pokemon> showPokeball() {
         int cont = 1;
         for (Pokemon pokemon : this.pokeball) {
 
             System.out.println(cont + " -" + pokemon.getName() + " nivel: " + pokemon.getLevel() + " fuerza: " + pokemon.getPower());
             cont++;
         }
+        return this.pokeball;
     }
 
     public Pokemon choosePokemon(int index) {
@@ -102,13 +103,14 @@ public class Trainer {
         this.firstSession = true;
     }
 
-    public void showTrainers() {
+    public ArrayList<Trainer> showTrainers() {
         int cont = 1;
         for (Trainer trainer : BBDD.getTrainersBBDD()) {
 
             System.out.println(cont + " -" + trainer.getName());
             cont++;
         }
+        return BBDD.getTrainersBBDD();
     }
 
     public Trainer chooseEnemy(int index) {
