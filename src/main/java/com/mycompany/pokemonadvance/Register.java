@@ -17,7 +17,7 @@ public class Register {
     public void setRegister(String name, String password, String email, ArrayList<Trainer> trainersList){
         Trainer trainer = new Trainer(name,password,email);
         trainersList.add(trainer);
-        System.out.println("Entrenador registrado.");
+        
     }
     
 }

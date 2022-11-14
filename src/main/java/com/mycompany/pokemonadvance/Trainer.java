@@ -80,15 +80,15 @@ public class Trainer {
     }
 
     public void showPokeball() {
-         int cont = 1;
+        int cont = 1;
         for (Pokemon pokemon : this.pokeball) {
-           
-            System.out.println(cont  + " -" + pokemon.getName() + " nivel: " + pokemon.getLevel() + " fuerza: " + pokemon.getPower());
+
+            System.out.println(cont + " -" + pokemon.getName() + " nivel: " + pokemon.getLevel() + " fuerza: " + pokemon.getPower());
             cont++;
         }
     }
-    
-    public Pokemon choosePokemon(int index){
+
+    public Pokemon choosePokemon(int index) {
         return pokeball.get(index);
     }
 
@@ -100,6 +100,23 @@ public class Trainer {
         System.out.println(firstPokemon.getName());
         pokeball.add(firstPokemon);
         this.firstSession = true;
+    }
+
+    public void showTrainers() {
+        int cont = 1;
+        for (Trainer trainer : BBDD.getTrainersBBDD()) {
+
+            System.out.println(cont + " -" + trainer.getName());
+            cont++;
+        }
+    }
+
+    public Trainer chooseEnemy(int index) {
+        return BBDD.getTrainersBBDD().get(index);
+    }
+    
+    public void removePokemon(Pokemon p){
+        this.pokeball.remove(p);
     }
 
 }

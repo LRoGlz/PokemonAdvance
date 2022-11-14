@@ -11,9 +11,21 @@ import java.util.ArrayList;
  * @author igallego
  */
 public class BBDD {
+    private static BBDD bbdd;
+    private static ArrayList<Pokemon> pokemonsBBDD;
+    private static ArrayList<Trainer> trainersBBDD;
     
-    private static ArrayList<Pokemon> pokemonsBBDD = new ArrayList();
-    private static ArrayList<Trainer> trainersBBDD = new ArrayList();
+    private BBDD(){
+        pokemonsBBDD = new ArrayList();
+        trainersBBDD = new ArrayList();
+    }
+    
+    public static BBDD getInstance(){
+        if(bbdd == null){
+           bbdd = new BBDD();
+        }
+        return bbdd;
+    }
     
     public static void addTrainer (Trainer trainer){
         trainersBBDD.add(trainer);

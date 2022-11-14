@@ -66,22 +66,14 @@ public class Pokemon {
     public void setPower(int power) {
         this.power = power;
     }
-
-    public boolean fight(Pokemon pokemonEnemy) {
-        comparePokemons(pokemonEnemy);
-        if(comparePokemons(pokemonEnemy))
-            return true;
-        else
-            return false;
-    }
     
     // Pelear contra otro usuario
-    public void fightEnemy (Trainer enemy){
+    public Pokemon fightEnemy (Trainer enemy){
         enemy.getPokeball();
         Random r = new Random();
         int index = r.nextInt(enemy.getPokeball().size());
         Pokemon pokemonEnemy = enemy.getPokeball().get(index);
-        comparePokemons(pokemonEnemy);
+        return pokemonEnemy;
     }
     
     // Compara los pokemons para ver quien gana
@@ -119,17 +111,14 @@ public class Pokemon {
             if (level == 5){
                 evolve();
             }
-            System.out.println("Enhorabuena, has ganado");
             return true;
         } else {
-            System.out.println("Oh no, has perdido");
             return false;
         }
     }
     
     public void train (){
         ++this.level;
-        System.out.println(this.name + "ha subido a nivel " + this.level);
         if (level == 5){
             evolve();
         }
